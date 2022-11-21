@@ -10,14 +10,14 @@ import {decrement, increment, reset} from "../../../../store/counter/counter.act
 })
 export class ButtonComponent implements OnInit {
 
-  constructor(private store: Store<CounterState>) {
+  constructor(private store: Store<{ counter: CounterState }>) {
   }
 
   ngOnInit(): void {
   }
 
   onIncrement(): void {
-    this.store.dispatch(increment());
+    this.store.dispatch(increment({ value: 1 }));
   }
 
   onDecrement(): void {
@@ -26,6 +26,10 @@ export class ButtonComponent implements OnInit {
 
   onReset(): void {
     this.store.dispatch(reset());
+  }
+
+  addRandomValue(): void {
+    this.store.dispatch(increment({value : Math.floor(Math.random() * 100)}))
   }
 
 }

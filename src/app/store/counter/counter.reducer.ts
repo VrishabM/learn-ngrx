@@ -4,10 +4,10 @@ import {decrement, increment, reset} from "./counter.action";
 
 export const counterReducer = createReducer(
   counterState,
-  on(increment, (state) => {
+  on(increment, (state, props) => {
       return {
         ...state,
-        counter: state.counter + 10
+        counter: state.counter + props.value
       };
     }
   ),
